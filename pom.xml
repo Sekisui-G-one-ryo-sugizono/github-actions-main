@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
@@ -9,15 +11,35 @@
 
 	<name>github-actions</name>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	<profiles>
+		<profile>
+			<id>Develop</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+				<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<app.runtime>4.4.0</app.runtime>
-		<mule.maven.plugin.version>3.8.0</mule.maven.plugin.version>
-		<app.name>amartinez17-github-actions</app.name>
-		<env>Develop</env>
-	</properties>
+				<app.runtime>4.4.0</app.runtime>
+				<mule.maven.plugin.version>3.8.0</mule.maven.plugin.version>
+				<app.name>amartinez17-github-actions</app.name>
+				<env>Develop</env>
+			</properties>
+		</profile>
+		<profile>
+			<id>Release</id>
+			<properties>
+				<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+				<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+				<app.runtime>4.4.0</app.runtime>
+				<mule.maven.plugin.version>3.8.0</mule.maven.plugin.version>
+				<app.name>amartinez17-github-actions</app.name>
+				<env>Verification</env>
+			</properties>
+		</profile>
+	</profiles>
 
 	<build>
 		<plugins>
@@ -37,10 +59,8 @@
 						<muleVersion>${app.runtime}</muleVersion>
 
 						<businessGroup>株式会社安川電機</businessGroup>
-<!-- 
-						<password>${anypoint.password}</password>
+						<!-- <password>${anypoint.password}</password> -->
 						<applicationName>${app.name}</applicationName>
- -->
 						<connectedAppClientId>7288cf3a70f743ad8dbfea71b00a3d65</connectedAppClientId>
 						<connectedAppClientSecret>0339aF9980164fD99053A26e22EDc411</connectedAppClientSecret>
 						<connectedAppGrantType>client_credentials</connectedAppGrantType>
@@ -51,11 +71,7 @@
 						<workers>1</workers>
 						<objectStoreV2>true</objectStoreV2>
 						<!-- Start: SECURED PROPERTIES CI/CD -->
-<!-- 
-						<properties>
-							<secure.key>${decryption.key}</secure.key>
-						</properties>
- -->
+						<!-- <properties> <secure.key>${decryption.key}</secure.key> </properties> -->
 						<!-- End: SECURED PROPERTIES CI/CD -->
 					</cloudHubDeployment>
 					<classifier>mule-application</classifier>
