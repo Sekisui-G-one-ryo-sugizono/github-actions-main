@@ -35,9 +35,16 @@
 					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>${app.runtime}</muleVersion>
-						<username>${anypoint.username}</username>
+
+						<businessGroup>株式会社安川電機</businessGroup>
+<!-- 
 						<password>${anypoint.password}</password>
 						<applicationName>${app.name}</applicationName>
+ -->
+						<connectedAppClientId>7288cf3a70f743ad8dbfea71b00a3d65</connectedAppClientId>
+						<connectedAppClientSecret>0339aF9980164fD99053A26e22EDc411</connectedAppClientSecret>
+						<connectedAppGrantType>client_credentials</connectedAppGrantType>
+
 						<environment>${env}</environment>
 						<workerType>MICRO</workerType>
 						<region>ap-northeast-1</region>
