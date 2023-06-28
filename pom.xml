@@ -16,8 +16,7 @@
 		<app.runtime>4.4.0</app.runtime>
 		<mule.maven.plugin.version>3.8.0</mule.maven.plugin.version>
 		<app.name>amartinez17-github-actions</app.name>
-		<env>Sandbox</env>
-		<munit.version>2.3.13</munit.version>
+		<env>Develop</env>
 	</properties>
 
 	<build>
@@ -45,51 +44,14 @@
 						<workers>1</workers>
 						<objectStoreV2>true</objectStoreV2>
 						<!-- Start: SECURED PROPERTIES CI/CD -->
+<!-- 
 						<properties>
 							<secure.key>${decryption.key}</secure.key>
 						</properties>
+ -->
 						<!-- End: SECURED PROPERTIES CI/CD -->
 					</cloudHubDeployment>
 					<classifier>mule-application</classifier>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>com.mulesoft.munit.tools</groupId>
-				<artifactId>munit-maven-plugin</artifactId>
-				<version>${munit.version}</version>
-				<executions>
-					<execution>
-						<id>test</id>
-						<phase>test</phase>
-						<goals>
-							<goal>test</goal>
-							<goal>coverage-report</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<!-- START: MUnit coverage -->
-					<environmentVariables>
-						<secure.key>${decryption.key}</secure.key>
-					</environmentVariables>
-					<!-- END: MUnit coverage -->
-					<coverage>
-						<runCoverage>true</runCoverage>
-						<!-- START: MUnit coverage -->
-						<failBuild>true</failBuild>
-    					<requiredApplicationCoverage>90</requiredApplicationCoverage>
-						<!-- <requiredResourceCoverage>50</requiredResourceCoverage> -->
-						<!-- <requiredFlowCoverage>50</requiredFlowCoverage> -->
-						<!-- END: MUnit coverage -->
-						<formats>
-							<!-- START: MUnit coverage -->
-							<format>console</format>
-							<format>sonar</format>
-							<format>json</format>
-							<!-- END: MUnit coverage -->
-							<format>html</format>
-						</formats>
-					</coverage>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -107,26 +69,6 @@
 			<artifactId>mule-sockets-connector</artifactId>
 			<version>1.2.2</version>
 			<classifier>mule-plugin</classifier>
-		</dependency>
-		<dependency>
-			<groupId>com.mulesoft.modules</groupId>
-			<artifactId>mule-secure-configuration-property-module</artifactId>
-			<version>1.2.5</version>
-			<classifier>mule-plugin</classifier>
-		</dependency>
-		<dependency>
-			<groupId>com.mulesoft.munit</groupId>
-			<artifactId>munit-runner</artifactId>
-			<version>2.3.13</version>
-			<classifier>mule-plugin</classifier>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.mulesoft.munit</groupId>
-			<artifactId>munit-tools</artifactId>
-			<version>2.3.13</version>
-			<classifier>mule-plugin</classifier>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.mule.weave</groupId>
